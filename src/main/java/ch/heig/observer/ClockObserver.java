@@ -1,4 +1,5 @@
 package ch.heig.observer;
 
-public class ClockObserver {
+public interface ClockObserver {
+    void Update();
 }
