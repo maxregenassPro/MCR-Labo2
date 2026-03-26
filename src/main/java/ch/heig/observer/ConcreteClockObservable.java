@@ -3,9 +3,11 @@ package ch.heig.observer;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class ConcreteClockObservable extends ClockObservable {
-    private Timer  timer;
+    private Timer _timer;
+    private Date _time;
     private final int INTERVAL = 1000;
 
     public ConcreteClockObservable() {
@@ -13,31 +15,41 @@ public class ConcreteClockObservable extends ClockObservable {
     }
 
     public Timer getTimer() {
-        return timer;
+        return _timer;
+    }
+
+    public Date getTime() {
+        return _time;
     }
 
     public void setTimer(Timer timer) {
-        this.timer = timer;
+        this._timer = timer;
+    }
+
+    private void update(){
+        _time=new Date();
         this.notifyObservers();
     }
 
     public void CreateTimer(){
-        timer = new Timer(INTERVAL, new ActionListener() {
+        _timer = new Timer(INTERVAL, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                setTimer(timer);
+                {
+                    update();
+                }
             }
         });
 
-        timer.setRepeats(true);
+        _timer.setRepeats(true);
     }
 
     public void Run(){
-        timer.start();
+        _timer.start();
     }
 
     public void Stop(){
-        timer.stop();
+        _timer.stop();
     }
 
     public void Clear(){

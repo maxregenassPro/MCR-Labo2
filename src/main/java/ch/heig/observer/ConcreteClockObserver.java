@@ -1,18 +1,26 @@
 package ch.heig.observer;
 
 
+import ch.heig.render.ClockCanvas;
+
 import javax.swing.*;
+import java.util.Date;
 
 public class ConcreteClockObserver implements ClockObserver{
-    private Timer timer;
-    private final ConcreteClockObservable cco;
 
-    public ConcreteClockObserver(ConcreteClockObservable cco) {
+    private final ConcreteClockObservable cco;
+    private ClockCanvas _canvas;
+
+    public ConcreteClockObserver(ConcreteClockObservable cco, ClockCanvas canvas) {
+        this._canvas=canvas;
         this.cco = cco;
+        this.cco.attach(this);
     }
 
     @Override
     public void Update() {
-        this.timer = cco.getTimer();
+        Date d = cco.getTime();
+        System.out.println(d.getHours()+"|"+d.getMinutes()+"|"+d.getSeconds());
+        _canvas.setTime(d.getHours(),d.getMinutes(),d.getSeconds());
     }
 }

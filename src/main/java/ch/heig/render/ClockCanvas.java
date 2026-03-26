@@ -1,5 +1,7 @@
 package ch.heig.render;
 
+import ch.heig.observer.ConcreteClockObserver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.time.Clock;
@@ -7,12 +9,19 @@ import java.time.Clock;
 public abstract class ClockCanvas extends JPanel {
 
     public static final int SIZE = 300;
-    public static final Color BACKGROUND_COLOR = new Color(0x16162a);
+    public static final Color BACKGROUND_COLOR = new Color(0xffffff);
+
+
+    protected int p_h,p_m,p_s;
+
 
     public final int size;
 
     ClockCanvas(){
         this.size=SIZE;
+        this.p_h=0;
+        this.p_m=0;
+        this.p_s=0;
     }
 
     ClockCanvas(int size){
@@ -43,5 +52,13 @@ public abstract class ClockCanvas extends JPanel {
 
         g.setColor(BACKGROUND_COLOR);
         g.fillRect(0,0,size,size);
+    }
+
+
+    public void setTime(int h, int m, int s){
+        this.p_h=h%24;
+        this.p_m=m%60;
+        this.p_s=s%60;
+        this.repaint();
     }
 }
