@@ -11,10 +11,10 @@ public class ClockWindowFactory {
     }
 
     public static ClockWindow createRom(ConcreteClockObservable cco){
-        return new ClockWindow("Rom",cco,new ClockCanavasAna("cadran_chiffres_romains.jpg"));
+        return new ClockWindow("Rom",cco,new ClockCanavasRom());
     }
 
     public static ClockWindow createArb(ConcreteClockObservable cco){
-        return new ClockWindow("Arb",cco,new ClockCanavasAna("cadran_chiffres_arabes.jpg"));
+        return new ClockWindow("Arb",cco,new ClockCanavasArb());
     }
 }
