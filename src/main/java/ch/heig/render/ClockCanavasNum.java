@@ -18,6 +18,10 @@ public class ClockCanavasNum extends ClockCanvas{
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.black);
-        g.drawString(getTimeText(),size/2,size/2);
+        g.setFont(new Font("Arial", Font.BOLD, 60));
+        String txt = getTimeText();
+
+        // size/2 (center) - txt.lenght()/2 (center du text) * 60/2 (millieux d'une lettre) -> size/2 - txt.length() * 60/4 (15)
+        g.drawString(txt,size/2-txt.length()*15,size/2+15);
     }
 }

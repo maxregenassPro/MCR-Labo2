@@ -17,10 +17,22 @@ public class ConcreteClockObserver implements ClockObserver{
         this.cco.attach(this);
     }
 
+    /**
+     * get hours, minute, second from time (milliseconde)
+     * @param time milisiconde
+     * @return [hours, minute, second]
+     */
+    int[] getTime(long time){
+        long hours = time / 3600000;
+        long minute = time / 60000 - hours;
+        long second = time / 1000 - minute - hours;
+
+        return new int[]{Math.round(hours),Math.round(minute),Math.round(second)};
+    }
+
     @Override
     public void Update() {
-        Date d = cco.getTime();
-        System.out.println(d.getHours()+"|"+d.getMinutes()+"|"+d.getSeconds());
-        _canvas.setTime(d.getHours(),d.getMinutes(),d.getSeconds());
+        int[] time = getTime(cco.getTime());
+        _canvas.setTime(time[0],time[1],time[2]);
     }
 }

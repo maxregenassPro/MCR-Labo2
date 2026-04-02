@@ -7,7 +7,11 @@ import java.util.Date;
 
 public class ConcreteClockObservable extends ClockObservable {
     private Timer _timer;
-    private Date _time;
+    //private Date _time;
+
+    private long _time=0;
+    private long _lastUpdate=0;
+
     private final int INTERVAL = 1000;
 
     public ConcreteClockObservable() {
@@ -18,7 +22,7 @@ public class ConcreteClockObservable extends ClockObservable {
         return _timer;
     }
 
-    public Date getTime() {
+    public long getTime() {
         return _time;
     }
 
@@ -27,7 +31,9 @@ public class ConcreteClockObservable extends ClockObservable {
     }
 
     private void update(){
-        _time=new Date();
+        long t = System.currentTimeMillis();
+        _time+=(t-_lastUpdate);
+        _lastUpdate=t;
         this.notifyObservers();
     }
 
@@ -45,6 +51,7 @@ public class ConcreteClockObservable extends ClockObservable {
     }
 
     public void Run(){
+        _lastUpdate=System.currentTimeMillis();
         _timer.start();
     }
 
