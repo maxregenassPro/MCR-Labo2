@@ -1,18 +1,16 @@
 package ch.heig.observer;
 
 
-import ch.heig.render.ClockCanvas;
-
-import javax.swing.*;
-import java.util.Date;
+import ch.heig.render.AbstractClockCanvas;
 
 public class ConcreteClockObserver implements ClockObserver{
 
     private final ConcreteClockObservable cco;
-    private ClockCanvas _canvas;
+    private AbstractClockCanvas _canvas;
 
-    public ConcreteClockObserver(ConcreteClockObservable cco, ClockCanvas canvas) {
+    public ConcreteClockObserver(ConcreteClockObservable cco, AbstractClockCanvas canvas) {
         this._canvas=canvas;
+        this._canvas.clockName = cco.name;
         this.cco = cco;
         this.cco.attach(this);
     }

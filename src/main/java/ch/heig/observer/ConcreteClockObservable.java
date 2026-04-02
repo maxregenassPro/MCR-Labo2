@@ -14,8 +14,14 @@ public class ConcreteClockObservable extends ClockObservable {
 
     private final int INTERVAL = 1000;
 
-    public ConcreteClockObservable() {
+    public final String name;
+
+    public ConcreteClockObservable(String name) {
+        this.name=name;
         CreateTimer();
+    }
+    public ConcreteClockObservable() {
+        this("default name");
     }
 
     public Timer getTimer() {

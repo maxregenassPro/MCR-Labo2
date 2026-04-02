@@ -7,7 +7,7 @@ import ch.heig.render.ClockWindowFactory;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        ConcreteClockObservable ccoa=new ConcreteClockObservable();
+        ConcreteClockObservable ccoa=new ConcreteClockObservable("chrono #1");
         ccoa.Run();
         ClockWindowFactory.createNum(ccoa);
         ClockWindowFactory.createArb(ccoa);

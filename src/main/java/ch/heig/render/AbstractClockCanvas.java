@@ -1,12 +1,9 @@
 package ch.heig.render;
 
-import ch.heig.observer.ConcreteClockObserver;
-
 import javax.swing.*;
 import java.awt.*;
-import java.time.Clock;
 
-public abstract class ClockCanvas extends JPanel {
+public abstract class AbstractClockCanvas extends JPanel {
 
     public static final int SIZE = 300;
     public static final Color BACKGROUND_COLOR = new Color(0xffffff);
@@ -17,14 +14,16 @@ public abstract class ClockCanvas extends JPanel {
 
     public final int size;
 
-    ClockCanvas(){
+    public String clockName = "";
+
+    AbstractClockCanvas(){
         this.size=SIZE;
         this.p_h=0;
         this.p_m=0;
         this.p_s=0;
     }
 
-    ClockCanvas(int size){
+    AbstractClockCanvas(int size){
         this.size=size;
     }
 
@@ -43,6 +42,14 @@ public abstract class ClockCanvas extends JPanel {
     @Override
     public Dimension getMaximumSize() {
         return getPreferredSize();
+    }
+
+
+    public void drawTextCenter(Graphics g, int x, int y,String text, int size, int style){
+        g.setFont(new Font("Arial", style, size));
+
+        // size/2 (center) - text.lenght()/2 (center du text) * size/2 (millieux d'une lettre)
+        g.drawString(text,x-text.length()*size/4,y+15);
     }
 
     @Override
