@@ -9,7 +9,7 @@ public class ConcreteClockObservable extends ClockObservable {
     private Timer _timer;
     //private Date _time;
 
-    private long _time=0;
+    private long _time=-1;
     private long _lastUpdate=0;
 
     private final int INTERVAL = 1000;
@@ -66,6 +66,7 @@ public class ConcreteClockObservable extends ClockObservable {
     }
 
     public void Clear(){
-        CreateTimer();
+        _lastUpdate=System.currentTimeMillis();
+        _time=0;
     }
 }
