@@ -1,8 +1,14 @@
-package ch.heig.render;
+package ch.heig.render.clock;
+
+import ch.heig.observer.ConcreteClockObservable;
 
 import java.awt.*;
 
 public class ClockCanavasArb extends AbstractClockCanavasAna{
+    ClockCanavasArb(ConcreteClockObservable cco) {
+        super(cco);
+    }
+
     @Override
     public String getSprite() {
         return "cadran_chiffres_arabes.jpg";

@@ -1,8 +1,14 @@
-package ch.heig.render;
+package ch.heig.render.clock;
+
+import ch.heig.observer.ConcreteClockObservable;
 
 import java.awt.*;
 
 public class ClockCanavasNum extends AbstractClockCanvas {
+
+    ClockCanavasNum(ConcreteClockObservable cco) {
+        super(cco);
+    }
 
     public String getTimeText(){
         String s ="";

@@ -1,8 +1,14 @@
-package ch.heig.render;
+package ch.heig.render.clock;
+
+import ch.heig.observer.ConcreteClockObservable;
 
 import java.awt.*;
 
 public class ClockCanavasRom extends AbstractClockCanavasAna{
+
+    ClockCanavasRom(ConcreteClockObservable cco) {
+        super(cco);
+    }
 
     @Override
     public String getSprite() {

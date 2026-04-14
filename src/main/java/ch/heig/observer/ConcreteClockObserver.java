@@ -1,7 +1,7 @@
 package ch.heig.observer;
 
 
-import ch.heig.render.AbstractClockCanvas;
+import ch.heig.render.clock.AbstractClockCanvas;
 
 public class ConcreteClockObserver implements ClockObserver{
 

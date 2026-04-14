@@ -1,5 +1,6 @@
-package ch.heig.render;
+package ch.heig.render.clock;
 
+import ch.heig.observer.ConcreteClockObservable;
 import ch.heig.ressource.TextureFactory;
 
 import java.awt.*;
@@ -12,6 +13,10 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
             {Color.red,Color.red,Color.red}
     };
 
+    AbstractClockCanavasAna(ConcreteClockObservable cco) {
+        super(cco);
+    }
+
     public abstract String getSprite();
 
 
@@ -19,8 +24,8 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
 
 
     public void paintClockLine(Graphics g,Color color,float t, float length,float width){
-        int center_x=getWidth()/2;
-        int center_y=getHeight()/2;
+        int center_x=size/2;
+        int center_y=size/2;
 
         double rad = Math.PI*(t*2-0.5);
         double newX = (Math.cos(rad));
@@ -41,20 +46,20 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
         super.paint(g);
 
         // get img
-        BufferedImage img = TextureFactory.getTexture(getSprite(),getWidth(),getHeight());
+        BufferedImage img = TextureFactory.getTexture(getSprite(),size,size);
 
         ((Graphics2D) g).drawImage(img , 0, 0, null);
 
         Color[] col = getColor();
 
         // hours
-        paintClockLine(g,col[0],((p_h%12)/12f+p_m/1440f+p_s/86400f),getWidth()/4f,3);
+        paintClockLine(g,col[0],((p_h%12)/12f+p_m/1440f+p_s/86400f),size/4f,3);
 
         // minute
-        paintClockLine(g,col[1],(p_m/60f+p_s/3600f),getWidth()/3.25f,3);
+        paintClockLine(g,col[1],(p_m/60f+p_s/3600f),size/3.25f,3);
 
         // sec
-        paintClockLine(g,col[2],(p_s/60f),getWidth()/3.25f,2);
+        paintClockLine(g,col[2],(p_s/60f),size/3.25f,2);
 
         g.setColor(Color.black);
         drawTextCenter(g,size/2,size/2+15, clockName,15,Font.PLAIN);

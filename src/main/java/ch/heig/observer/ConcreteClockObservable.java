@@ -68,5 +68,6 @@ public class ConcreteClockObservable extends ClockObservable {
     public void Clear(){
         _lastUpdate=System.currentTimeMillis();
         _time=0;
+        update();
     }
 }

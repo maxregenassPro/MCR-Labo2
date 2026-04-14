@@ -1,17 +1,11 @@
 package ch.heig;
 
-import ch.heig.observer.ConcreteClockObservable;
-import ch.heig.observer.ConcreteClockObserver;
-import ch.heig.render.ClockWindowFactory;
+import ch.heig.render.clock.ClockControlPanel;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        ConcreteClockObservable ccoa=new ConcreteClockObservable();
-        ccoa.Run();
-        ClockWindowFactory.createNum(ccoa);
-        ClockWindowFactory.createArb(ccoa);
-        ClockWindowFactory.createRom(ccoa);
+        ClockControlPanel ccp = new ClockControlPanel(3);
 
 
     }
