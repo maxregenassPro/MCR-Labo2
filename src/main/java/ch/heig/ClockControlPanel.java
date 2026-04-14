@@ -1,7 +1,7 @@
-package ch.heig.render.clock;
+package ch.heig;
 
-import ch.heig.observer.ConcreteClockObservable;
-import ch.heig.render.window.ClockWindow;
+import ch.heig.clock.ClockFactory;
+import ch.heig.observer.ClockObservable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClockControlPanel extends JFrame {
-    private final List<ConcreteClockObservable> _clocks=new ArrayList<>();
-    private final List<ClockWindow> _clockWindows=new ArrayList<>();
+    private final List<ClockObservable> _clocks=new ArrayList<>();
 
     public ClockControlPanel(int nClocks){
         if(nClocks<0 || nClocks>9)throw new IllegalArgumentException();
@@ -22,23 +21,23 @@ public class ClockControlPanel extends JFrame {
         for (int i = 1; i <= nClocks; i++) {
             String name = "Chrono #" + i;
             JLabel label = new JLabel(name);
-            ConcreteClockObservable ccoa=new ConcreteClockObservable(name);
+            ClockObservable ccoa=new ClockObservable(name);
 
             _clocks.add(ccoa);
 
             JButton btnStart = new JButton("Démarrer");
             btnStart.addActionListener(e -> {
-                ccoa.Run();
+                ccoa.run();
             });
 
             JButton btnStop = new JButton("Arrêter");
             btnStop.addActionListener(e -> {
-                ccoa.Stop();
+                ccoa.stop();
             });
 
             JButton btnReset = new JButton("Réinitialiser");
             btnReset.addActionListener(e -> {
-                ccoa.Clear();
+                ccoa.clear();
             });
 
             JButton btnRomain = new JButton("Cadran romain");
@@ -73,15 +72,15 @@ public class ClockControlPanel extends JFrame {
         btnRom.addActionListener(e -> {
             System.out.println("test");
             System.out.println(_clocks.size() + " | "+nClocks);
-            ClockFactory.createAllRom(_clocks.toArray(new ConcreteClockObservable[0]),"Cadran romain");
+            ClockFactory.createAllRom(_clocks.toArray(new ClockObservable[0]),"Cadran romain");
         });
         JButton btnArabe = new JButton("Cadran arabe");
         btnArabe.addActionListener(e -> {
-            ClockFactory.createAllArb(_clocks.toArray(new ConcreteClockObservable[0]),"Cadran arabe");
+            ClockFactory.createAllArb(_clocks.toArray(new ClockObservable[0]),"Cadran arabe");
         });
         JButton btnNum = new JButton("Numérique");
         btnNum.addActionListener(e -> {
-            ClockFactory.createAllNum(_clocks.toArray(new ConcreteClockObservable[0]),"Numérique");
+            ClockFactory.createAllNum(_clocks.toArray(new ClockObservable[0]),"Numérique");
         });
 
 

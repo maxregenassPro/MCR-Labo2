@@ -1,22 +1,50 @@
 package ch.heig.observer;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.*;
 
-public class ClockObservable {
-    private List<ClockObserver> observers = new ArrayList<>();
+public class ClockObservable extends Observable {
+    private final Timer _timer;
 
-    public void attach(ClockObserver observer) {
-        observers.add(observer);
+    private long _time=-1;
+    private long _lastUpdate=0;
+
+    public final String name;
+
+    public ClockObservable(String name) {
+        this.name=name;
+
+        _timer = new Timer(1000, arg0 -> {
+            {
+                long t = System.currentTimeMillis();
+                _time+=(t-_lastUpdate);
+                _lastUpdate=t;
+                notifyObservers();
+            }
+        });
+
+        _timer.setRepeats(true);
+    }
+    public ClockObservable() {
+        this("default name");
     }
 
-    public void detach(ClockObserver observer) {
-        observers.remove(observer);
+    public long getTime() {
+        return _time;
     }
 
-    public void notifyObservers() {
-        for (ClockObserver observer : observers) {
-            observer.Update();
-        }
+
+    public void run(){
+        _lastUpdate=System.currentTimeMillis();
+        _timer.start();
+    }
+
+    public void stop(){
+        _timer.stop();
+    }
+
+    public void clear(){
+        _lastUpdate=System.currentTimeMillis();
+        _time=0;
+        notifyObservers();
     }
 }

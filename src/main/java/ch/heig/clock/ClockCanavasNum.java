@@ -1,13 +1,13 @@
-package ch.heig.render.clock;
+package ch.heig.clock;
 
-import ch.heig.observer.ConcreteClockObservable;
+import ch.heig.observer.ClockObservable;
 
 import java.awt.*;
 
 public class ClockCanavasNum extends AbstractClockCanvas {
 
-    ClockCanavasNum(ConcreteClockObservable cco) {
-        super(cco);
+    ClockCanavasNum(ClockObservable observable) {
+        super(observable);
     }
 
     public String getTimeText(){
@@ -22,6 +22,6 @@ public class ClockCanavasNum extends AbstractClockCanvas {
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.black);
-        drawTextCenter(g,size/2,size/2, clockName +" : "+getTimeText(),20,Font.BOLD);
+        drawTextCenter(g,size/2,size/2, getClockName() +" : "+getTimeText(),20,Font.BOLD);
     }
 }

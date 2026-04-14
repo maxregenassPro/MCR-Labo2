@@ -1,6 +1,6 @@
-package ch.heig.render.clock;
+package ch.heig.clock;
 
-import ch.heig.observer.ConcreteClockObservable;
+import ch.heig.observer.ClockObservable;
 import ch.heig.ressource.TextureFactory;
 
 import java.awt.*;
@@ -8,19 +8,15 @@ import java.awt.image.BufferedImage;
 
 public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
 
-    private static final Color[][] _COLORS={
-            {Color.red,Color.yellow,Color.blue},
-            {Color.red,Color.red,Color.red}
-    };
 
-    AbstractClockCanavasAna(ConcreteClockObservable cco) {
-        super(cco);
+    AbstractClockCanavasAna(ClockObservable observable) {
+        super(observable);
     }
 
-    public abstract String getSprite();
+    public abstract String getSpritePath();
 
 
-    public abstract Color[] getColor();
+    public abstract Color[] getColors();
 
 
     public void paintClockLine(Graphics g,Color color,float t, float length,float width){
@@ -46,11 +42,11 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
         super.paint(g);
 
         // get img
-        BufferedImage img = TextureFactory.getTexture(getSprite(),size,size);
+        BufferedImage img = TextureFactory.getTexture(getSpritePath(),size,size);
 
         ((Graphics2D) g).drawImage(img , 0, 0, null);
 
-        Color[] col = getColor();
+        Color[] col = getColors();
 
         // hours
         paintClockLine(g,col[0],((p_h%12)/12f+p_m/1440f+p_s/86400f),size/4f,3);
@@ -62,6 +58,6 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
         paintClockLine(g,col[2],(p_s/60f),size/3.25f,2);
 
         g.setColor(Color.black);
-        drawTextCenter(g,size/2,size/2+15, clockName,15,Font.PLAIN);
+        drawTextCenter(g,size/2,size/2+15, getClockName(),15,Font.PLAIN);
     }
 }

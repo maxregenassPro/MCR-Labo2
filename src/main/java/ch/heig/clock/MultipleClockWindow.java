@@ -1,22 +1,22 @@
-package ch.heig.render.window;
-
-import ch.heig.render.clock.AbstractClockCanvas;
+package ch.heig.clock;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MultipleClockWindow extends JFrame {
 
-    public static final int SIZE=540;
+    public static final int MIN_SIZE =540;
 
-    public final int _nClock;
-    public final JPanel _panel;
+    private final int _nClock;
+    private final JPanel _panel;
 
     private boolean _vertical = false;
 
-    public MultipleClockWindow(String title, AbstractClockCanvas[] canvas){
+    MultipleClockWindow(String title, AbstractClockCanvas[] canvas){
         setTitle(title);
 
         _nClock=canvas.length;
@@ -25,6 +25,14 @@ public class MultipleClockWindow extends JFrame {
         _panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                for(AbstractClockCanvas acc : canvas){
+                    acc.onClose();
+                }
+            }
+        });
 
         for(AbstractClockCanvas acc : canvas){
             _panel.add(acc);
@@ -60,8 +68,8 @@ public class MultipleClockWindow extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
-        setPreferredSize(new Dimension(SIZE,SIZE * _nClock));
-        setMinimumSize(new Dimension(SIZE,SIZE));
+        setPreferredSize(new Dimension(MIN_SIZE, MIN_SIZE * _nClock));
+        setMinimumSize(new Dimension(MIN_SIZE, MIN_SIZE));
 
 
     }

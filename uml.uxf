@@ -1,0 +1,107 @@
+<diagram program="umletino" version="15.1"><zoom_level>7</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>49</x><y>539</y><w>266</w><h>126</h></coordinates><panel_attributes>ressources</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>49</x><y>693</y><w>651</w><h>308</h></coordinates><panel_attributes>observer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>329</x><y>0</y><w>924</w><h>665</h></coordinates><panel_attributes>clock</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>616</x><y>224</y><w>238</w><h>189</h></coordinates><panel_attributes>/AbstractClockCanvas/
+--
+_+ SIZE : int_
+_+ BACKGROUND_COLOR : color_
+~ p_h : int
+~ p_m : int
+~ p_s : int
++ size : int
+--
+~ AbtsractClockCanvas(ClockObservable)
++ getClockName() : String
++ getPreferredSize() : Dimension
++ getMinimumSize() : Dimension
++ getMaximumSize() : Dimension
++ drawTextCenter(Graphics, int, int, String, int, int) : void
++ paint(Graphics) : void
++ setTime(int, int, int) : void
++ onClose() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>441</y><w>238</w><h>84</h></coordinates><panel_attributes>/AbstractClockCanvasAna/
+--
+--
+~ AbtsractClockCanvasAna(ClockObservable)
+/+ getSpritePath() : String/
+/+ getColors() : Color[]/
++ paintClockLine(Graphics, Color, float, float, float) : void
++ paint(Graphics) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>707</x><y>441</y><w>238</w><h>84</h></coordinates><panel_attributes>ClockCanvasNum
+--
+--
+~ ClockCanvasNum(ClockObservable)
++ getTimeText() : String
++ paint(Graphics) : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>434</x><y>567</y><w>238</w><h>63</h></coordinates><panel_attributes>ClockCanvasArb
+--
+--
+~ ClockCanvasArb(ClockObservable)
++ getSpritePath() : String
++ getColors() : Color[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>847</x><y>567</y><w>238</w><h>63</h></coordinates><panel_attributes>ClockCanvasRom
+--
+--
+~ ClockCanvasArb(ClockObservable)
++ getSpritePath() : String
++ getColors() : Color[]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>938</x><y>224</y><w>238</w><h>42</h></coordinates><panel_attributes>ClockWindow
+--
+--
+~ ClockWindow(String, AbstractClockCanvas)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>938</x><y>105</y><w>238</w><h>91</h></coordinates><panel_attributes>MultipleClockWindow
+--
+_+ MIN_SIZE: int_
+- _nClock : int
+- _panel : JPanel
+- _vertical : boolean
+--
+~ MultipleClockWindow(String, AbstractClockCanvas[])</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>581</x><y>35</y><w>322</w><h>105</h></coordinates><panel_attributes>ClockFactory
+--
+
+--
+_+ createNum(ClockObservable, String) : ClockWindow_
+_+ createArb(ClockObservable, String) : ClockWindow_
+_+ createRom(ClockObservable, String) : ClockWindow_
+_+ createAllRom(ClockObservable[], String) : MultipleClockWindow_
+_+ createAllArb(ClockObservable[], String) : MultipleClockWindow_
+_+ createAllNum(ClockObservable[], String) : MultipleClockWindow_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>553</x><y>406</y><w>196</w><h>49</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;10;260;30;10;30;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>728</x><y>406</y><w>126</w><h>49</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;160;30;160;50</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>518</y><w>434</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;600;30;600;70</additional_attributes></element><element><id>Relation</id><coordinates><x>546</x><y>518</y><w>21</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>84</x><y>728</y><w>238</w><h>56</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+/Iobserver/
+--
++ update() : void
++ detach() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>434</x><y>728</y><w>238</w><h>70</h></coordinates><panel_attributes>Observable
+--
+
+--
++ attach(ClockObserver) : void
++ detach(ClockObserver) : void
++ notifyObservers() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>826</y><w>238</w><h>133</h></coordinates><panel_attributes>ClockObservable
+--
+- _timer : Timer
+- _time : long
+- _lastUpdate : long
++ name : String
+--
++ ClockObservable(String)
++ ClockObservable()
++ getTime() : long
++ run() : void
++ stop() : void
++ clear() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>735</y><w>133</w><h>35</h></coordinates><panel_attributes>_observers
+lt=-
+m1=*</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>77</x><y>833</y><w>238</w><h>91</h></coordinates><panel_attributes>ClockObserver
+--
+--
++ ClockObserver(ClockObservable)
++ update() : void
++ detach() : void
++ getTime(long) : int[]
++ update() : void
++ getClockName() : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>308</x><y>840</y><w>147</w><h>63</h></coordinates><panel_attributes>_observed
+lt=-
+m2=1</panel_attributes><additional_attributes>10;70;50;70;50;20;190;20</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>350</y><w>630</w><h>546</h></coordinates><panel_attributes>_canvas
+lt=-
+m1=1
+m2=1
+_observer</panel_attributes><additional_attributes>880;20;10;20;10;750;110;750</additional_attributes></element><element><id>Relation</id><coordinates><x>196</x><y>777</y><w>21</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>791</y><w>21</w><h>49</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>63</x><y>574</y><w>238</w><h>63</h></coordinates><panel_attributes>TextureFactory
+--
+_- _map : Map&lt;String,BufferedImage&gt;_
+--
+_+ loadTexture(String) : void_
+_+ getTexture(String) : BufferedImage_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>875</x><y>882</y><w>238</w><h>42</h></coordinates><panel_attributes>ClockControlPanel
+--
+--
++ ClockControlPanel(int)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>889</y><w>217</w><h>35</h></coordinates><panel_attributes>_clocks
+lt=-
+m1=*</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element></diagram>

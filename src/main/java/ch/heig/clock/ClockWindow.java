@@ -1,21 +1,30 @@
-package ch.heig.render.window;
-
-import ch.heig.render.clock.AbstractClockCanvas;
+package ch.heig.clock;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ClockWindow extends JFrame {
 
-    public ClockWindow(String title, AbstractClockCanvas canvas){
+    ClockWindow(String title, AbstractClockCanvas canvas){
         add(canvas);
 
         setTitle(title);
 
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                canvas.onClose();
+            }
+        });
+
         // pack and make it visible
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
+
     }
 }

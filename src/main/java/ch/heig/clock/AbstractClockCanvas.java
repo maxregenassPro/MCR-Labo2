@@ -1,16 +1,17 @@
-package ch.heig.render.clock;
+package ch.heig.clock;
 
-import ch.heig.observer.ConcreteClockObservable;
-import ch.heig.observer.ConcreteClockObserver;
+import ch.heig.observer.ClockObservable;
+import ch.heig.observer.ClockObserver;
 
 import javax.swing.*;
 import java.awt.*;
 
 public abstract class AbstractClockCanvas extends JPanel {
 
-    private final ConcreteClockObserver _cco;
+    private final ClockObserver _observer;
     public static final int SIZE = 300;
     public static final Color BACKGROUND_COLOR = new Color(0xffffff);
+
 
 
     protected int p_h,p_m,p_s;
@@ -18,21 +19,23 @@ public abstract class AbstractClockCanvas extends JPanel {
 
     public final int size;
 
-    public String clockName = "";
 
 
-
-    AbstractClockCanvas(ConcreteClockObservable cco){
+    AbstractClockCanvas(ClockObservable observable){
         this.size=SIZE;
         this.p_h=0;
         this.p_m=0;
         this.p_s=0;
 
-        _cco=new ConcreteClockObserver(cco,this);
+        _observer =new ClockObserver(observable,this);
 
-        _cco.Update();
+        _observer.update();
     }
 
+
+    public String getClockName(){
+        return  _observer.getClockName();
+    }
 
 
     @Override
@@ -73,5 +76,9 @@ public abstract class AbstractClockCanvas extends JPanel {
         this.p_m=m%60;
         this.p_s=s%60;
         this.repaint();
+    }
+
+    public void onClose(){
+        _observer.detach();
     }
 }
