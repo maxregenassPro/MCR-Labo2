@@ -1,3 +1,9 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 15:42 26.03.2026
+ *   Description: Observer use to manage clock
+ */
+
 package ch.heig.observer;
 
 

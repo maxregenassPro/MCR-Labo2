@@ -1,8 +1,14 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 14:53 02.04.2026
+ *   Description: Clock with arabic renderer
+ */
+
 package ch.heig.clock;
 
-import ch.heig.observer.ClockObservable;
+import java.awt.Color;
 
-import java.awt.*;
+import ch.heig.observer.ClockObservable;
 
 public class ClockCanavasArb extends AbstractClockCanavasAna{
     ClockCanavasArb(ClockObservable observable) {

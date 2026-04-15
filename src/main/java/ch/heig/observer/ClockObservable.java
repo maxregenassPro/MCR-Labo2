@@ -1,6 +1,12 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 15:42 26.03.2026
+ *   Description: Observable use to manage clock
+ */
+
 package ch.heig.observer;
 
-import javax.swing.*;
+import javax.swing.Timer;
 
 public class ClockObservable extends Observable {
     private final Timer _timer;

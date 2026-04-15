@@ -1,11 +1,22 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 11:43 13.04.2026
+ *   Description: window with multiple clock
+ */
+
 package ch.heig.clock;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MultipleClockWindow extends JFrame {
 

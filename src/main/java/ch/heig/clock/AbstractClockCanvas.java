@@ -1,10 +1,20 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 14:52 19.03.2026
+ *   Description: Abstract class use to render clock
+ */
+
 package ch.heig.clock;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import javax.swing.JPanel;
 
 import ch.heig.observer.ClockObservable;
 import ch.heig.observer.ClockObserver;
-
-import javax.swing.*;
-import java.awt.*;
 
 public abstract class AbstractClockCanvas extends JPanel {
 

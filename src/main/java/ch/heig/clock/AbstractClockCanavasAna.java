@@ -1,10 +1,20 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 14:10 26.03.2026
+ *   Description: Abstract class use for clock with analogic renderer
+ */
+
 package ch.heig.clock;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import ch.heig.observer.ClockObservable;
 import ch.heig.ressource.TextureFactory;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
 
@@ -13,12 +23,28 @@ public abstract class AbstractClockCanavasAna extends AbstractClockCanvas {
         super(observable);
     }
 
+    /**
+     * get sprite path use by the clock
+     * @return sprite path
+     */
     public abstract String getSpritePath();
 
 
+    /**
+     * Get color use by the clock
+     * @return Color[3] => [Hours color, Minute color, Second Color]
+     */
     public abstract Color[] getColors();
 
 
+    /**
+     * Paint clock line
+     * @param g graphcs
+     * @param color color of the line
+     * @param t delta t of rotation t is between 0 and 1
+     * @param length length of the line
+     * @param width line width
+     */
     public void paintClockLine(Graphics g,Color color,float t, float length,float width){
         int center_x=size/2;
         int center_y=size/2;

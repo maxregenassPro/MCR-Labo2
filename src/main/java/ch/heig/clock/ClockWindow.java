@@ -1,8 +1,15 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 14:54 19.03.2026
+ *   Description: Window with a single clock
+ */
+
 package ch.heig.clock;
 
-import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 public class ClockWindow extends JFrame {
 

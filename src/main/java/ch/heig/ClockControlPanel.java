@@ -1,12 +1,23 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 15:17 02.04.2026
+ *   Description: control window use to start, reste, stop clock
+ */
+
 package ch.heig;
+
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import ch.heig.clock.ClockFactory;
 import ch.heig.observer.ClockObservable;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ClockControlPanel extends JFrame {
     private final List<ClockObservable> _clocks=new ArrayList<>();

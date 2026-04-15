@@ -1,3 +1,9 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 15:42 26.03.2026
+ *   Description: Base observable class
+ */
+
 package ch.heig.observer;
 
 import java.util.ArrayList;

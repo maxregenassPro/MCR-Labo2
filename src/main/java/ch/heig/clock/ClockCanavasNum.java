@@ -1,8 +1,16 @@
+/**
+ *   Autheur: Theo Bensaci, Maxime Regenass
+ *   Date: 15:12 19.03.2026
+ *   Description: Clock with numerical renderer
+ */
+
 package ch.heig.clock;
 
-import ch.heig.observer.ClockObservable;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 
-import java.awt.*;
+import ch.heig.observer.ClockObservable;
 
 public class ClockCanavasNum extends AbstractClockCanvas {
 
